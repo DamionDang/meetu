@@ -1,11 +1,21 @@
-fastapi==0.95.0
-uvicorn==0.21.1
-sqlalchemy==2.0.9
-psycopg2-binary==2.9.6
-pydantic==1.10.7
-python-jose==3.3.0
-passlib==1.7.4
-alembic==1.10.3
-geoalchemy2==0.13.8
-shapely==2.0.1
-websockets==10.4
+# 核心框架
+Django>=4.2,<5.0
+djangorestframework>=3.14.0
+
+# 数据库驱动（如果你使用 PostgreSQL）
+psycopg2-binary>=2.9.6
+
+# WebSocket 支持（用于实时聊天和通知）
+channels>=3.0.5
+redis>=5.0.3
+
+# JWT 认证支持（如果你使用了 Token/JWT 登录）
+djangorestframework-simplejwt>=5.3.1
+
+# 其他常用工具
+python-dotenv>=1.0.1  # 如果你用 .env 管理环境变量
+gunicorn>=21.2.0      # 生产部署 WSGI 服务器
+whitenoise>=6.4       # 静态文件服务中间件
+
+# 可选：前端测试工具
+httpie>=3.2.0         # 命令行 HTTP 客户端
