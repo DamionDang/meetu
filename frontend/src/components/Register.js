@@ -1,64 +1,33 @@
 // src/components/Register.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
+import { useNavigate } from 'react-router-dom';
 
-const Register = ({ onRegisterSuccess }) => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+function Register() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/register', {
-                username,
-                email,
-                password
-            });
-            const { token, id: userId } = response.data;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post('/auth/register/', { name, email, password });
+      alert('注册成功，请登录');
+      navigate('/login');
+    } catch (err) {
+      alert('注册失败，请重试');
+    }
+  };
 
-            // 存储 token 和用户 ID
-            localStorage.setItem('token', token);
-            localStorage.setItem('userId', userId);
-
-            // 注册成功回调
-            onRegisterSuccess(userId);
-        } catch (err) {
-            setError("Registration failed");
-        }
-    };
-
-    return (
-        <div className="register-container">
-            <h2>Register</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleRegister}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Register</button>
-            </form>
-        </div>
-    );
-};
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="姓名" required />
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="密码" required />
+      <button type="submit">注册</button>
+    </form>
+  );
+}
 
 export default Register;

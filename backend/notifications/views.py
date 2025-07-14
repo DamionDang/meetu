@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Notification
-from .serializers import NotificationSerializer, MarkAsReadSerializer
+from notifications.models import Notification
+from notifications.serializers import NotificationSerializer, MarkAsReadSerializer
 
 class NotificationListView(APIView):
     def get(self, request):

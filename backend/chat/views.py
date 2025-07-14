@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import ChatMessage
-from .serializers import ChatMessageSerializer
+from chat.models import ChatMessage
+from chat.serializers import ChatMessageSerializer
 
 class ChatHistoryView(APIView):
     def get(self, request, room_name):

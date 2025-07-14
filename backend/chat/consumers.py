@@ -1,8 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from datetime import datetime
-from users.models import CustomUser
-from .models import ChatMessage  # 可选：消息记录
+from chat.models import ChatMessage  # 可选：消息记录
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):

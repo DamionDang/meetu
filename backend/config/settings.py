@@ -21,12 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'channels',
+    'notifications',
     'users',
     'posts',
     'friends',
     'chat',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,9 @@ ASGI_APPLICATION = 'config.asgi.application'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
+        'CONFIG': {
+            "hosts": [("127.0.0.1", 6379)],
+        },
         # 生产环境请使用 Redis：
         # "CONFIG": {"hosts": [("127.0.0.1", 6379)]},
     }
@@ -84,7 +88,11 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",   # 前端开发服务器地址
+]
 
 LANGUAGE_CODE = 'en-us'
 

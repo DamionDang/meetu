@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Post
-from .serializers import  PostSerializer,PostCreateSerializer
+from posts.models import Post
+from posts.serializers import  PostSerializer,PostCreateSerializer
 from users.models import User
 
 class PostListView(APIView):

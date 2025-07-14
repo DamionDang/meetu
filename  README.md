@@ -48,3 +48,91 @@ map-social-full-project/
 ├── migrations/            # Alembic 数据库迁移脚本
 ├── docker-compose.yml     # Docker 部署配置
 └── README.md              # 使用说明和接口文档
+
+’‘’
+.
+├── backend/                  # Django 后端
+│   ├── config/               # Django 项目配置
+│   │   ├── __init__.py
+│   │   ├── asgi.py           # WebSocket 支持
+│   │   ├── settings.py       # 全局设置
+│   │   ├── urls.py           # 主路由
+│   │   └── wsgi.py           # 部署入口
+│   │
+│   ├── users/                # 用户系统模块
+│   │   ├── models.py         # 用户模型
+│   │   ├── views.py          # 登录 / 注册接口
+│   │   ├── serializers.py    # 序列化器
+│   │   ├── authentication.py # JWT 认证逻辑
+│   │   └── urls.py           # 路由
+│   │
+│   ├── posts/                # 动态发布模块
+│   │   ├── models.py         # 动态模型
+│   │   ├── views.py          # 接口视图
+│   │   ├── serializers.py    # 序列化器
+│   │   └── urls.py           # 路由
+│   │
+│   ├── friends/              # 好友关系模块
+│   │   ├── models.py         # 好友请求模型
+│   │   ├── views.py          # 接口视图
+│   │   ├── serializers.py    # 序列化器
+│   │   └── urls.py           # 路由
+│   │
+│   ├── chat/                 # 实时聊天模块
+│   │   ├── consumers.py      # WebSocket 消费者
+│   │   ├── routing.py        # WebSocket 路由
+│   │   └── apps.py
+│   │
+│   ├── notifications/        # 通知系统模块（新增）
+│   │   ├── models.py         # 通知模型
+│   │   ├── views.py          # 接口视图
+│   │   ├── serializers.py    # 序列化器
+│   │   ├── urls.py           # 路由
+│   │   └── utils.py          # 工具函数（WebSocket 推送）
+│   │
+│   ├── manage.py             # Django 管理脚本
+│   ├── requirements.txt      # Python 依赖包列表
+│   └── .gitignore            # Git 忽略文件
+│
+├── frontend/                 # React 前端项目
+│   ├── public/
+│   │   ├── index.html
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── components/       # 可复用组件
+│   │   │   ├── Header.jsx
+│   │   │   ├── PostForm.jsx
+│   │   │   ├── ChatBox.jsx
+│   │   │   └── NotificationItem.jsx
+│   │   │
+│   │   ├── pages/            # 页面组件
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Feed.jsx
+│   │   │   ├── Friends.jsx
+│   │   │   └── Chat.jsx
+│   │   │
+│   │   ├── hooks/            # 自定义 Hooks
+│   │   │   └── useWebSocket.js
+│   │   │
+│   │   ├── services/         # API 请求封装
+│   │   │   └── api.js
+│   │   │
+│   │   ├── App.jsx           # 根组件
+│   │   └── main.jsx          # 入口文件
+│   │
+│   ├── package.json
+│   ├── .env                  # 环境变量
+│   └── README.md             # React 默认说明文档
+│
+├── media/                    # 用户上传的媒体文件（如图片）
+│   └── uploads/
+│       └── posts/
+│           └── 2025/
+│               └── 07/
+│                   └── 02/
+│                       └── image.jpg
+│
+├── .gitignore
+└── README.md                 # 项目总说明文档
+‘’‘

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (
+from friends.views import (
     SendFriendRequestView,
     AcceptFriendRequestView,
     MyFriendRequestsView,

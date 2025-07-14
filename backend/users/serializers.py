@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import CustomUser
+from users.models import User
 from django.contrib.auth.password_validation import validate_password
 from users.utils import generate_jwt_token
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['id', 'email', 'username', 'avatar', 'bio', 'created_at']
 
 
@@ -14,7 +14,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['email', 'username', 'password', 'password2']
 
     def validate(self, attrs):
@@ -23,7 +23,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(
+        user = User.objects.create_user(
             email=validated_data['email'],
             username=validated_data['username'],
             password=validated_data['password']
@@ -41,8 +41,8 @@ class LoginSerializer(serializers.Serializer):
         password = data.get("password")
 
         try:
-            user = CustomUser.objects.get(email=email)
-        except CustomUser.DoesNotExist:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
             raise serializers.ValidationError("用户不存在")
 
         if not user.check_password(password):

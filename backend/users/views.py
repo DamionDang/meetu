@@ -2,9 +2,9 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import User
-from .serializers import UserSerializer
-from ..users.authentication import generate_jwt
+from users.models import User
+from users.serializers import UserSerializer
+from users.authentication import generate_jwt
 
 class RegisterView(APIView):
     def post(self, request):

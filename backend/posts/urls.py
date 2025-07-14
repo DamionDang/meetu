@@ -1,5 +1,5 @@
 from django.urls import path
-from ..posts.views import PostListView, CreatePostView,UserPostListView,PostDetailView
+from posts.views import PostListView, CreatePostView,UserPostListView,PostDetailView
 
 urlpatterns = [
     path('create/', CreatePostView.as_view(), name='post-create'),

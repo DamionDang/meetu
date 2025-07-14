@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from users.serializers import UserSerializer
-from .models import FriendRequest, Friendship
+from friends.models import FriendRequest, Friendship
 from users.models import User
 from django.db.models import Q
 

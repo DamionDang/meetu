@@ -1,15 +1,15 @@
 from django.db import models
-from users.models import CustomUser
+from users.models import User
 from django.db.models import Q
 
 class FriendRequest(models.Model):
     from_user = models.ForeignKey(
-        CustomUser,
+        User,
         related_name='sent_requests',
         on_delete=models.CASCADE
     )
     to_user = models.ForeignKey(
-        CustomUser,
+        User,
         related_name='received_requests',
         on_delete=models.CASCADE
     )
@@ -30,12 +30,12 @@ class FriendRequest(models.Model):
 
 class Friendship(models.Model):
     user1 = models.ForeignKey(
-        CustomUser,
+        User,
         related_name='friends1',
         on_delete=models.CASCADE
     )
     user2 = models.ForeignKey(
-        CustomUser,
+        User,
         related_name='friends2',
         on_delete=models.CASCADE
     )
