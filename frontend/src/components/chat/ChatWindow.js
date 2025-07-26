@@ -19,7 +19,6 @@ function ChatWindow({ selectedFriend }) {
       socket.off('receive_message');
     };
   }, [selectedFriend]);
-
   const sendMessage = (text) => {
     const message = {
       sender: parseInt(localStorage.getItem('userId')),
