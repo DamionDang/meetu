@@ -1,4 +1,4 @@
-# 🌟 Social Network App
+# 🌟 MEETU Network App
 
 > 基于 React 和 Django 的社交网络应用，支持用户登录、发布动态、好友系统、实时聊天与地图定位等功能。
 
