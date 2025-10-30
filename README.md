@@ -127,5 +127,5 @@ python manage.py runserver
 
 如有任何问题或建议，请联系我：
 📮[dangruizhi66@163.com]
-WeChat：![image](https://github.com/user-attachments/assets/68c0d8f2-6fa5-4a91-b069-7dfafd096f6c)
+WeChat：Nu11R0SE-
 
